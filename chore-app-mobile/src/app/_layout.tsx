@@ -45,10 +45,9 @@ if (Platform.OS !== 'web') {
   });
 }
 
-// The home-screen widgets deep-link back into the app with `chores://today`
-// or `chores://stock` (see src/widgets) when an action needs the full app —
-// e.g. a chore that requires a completion photo. Route those the same way
-// push-notification taps are routed, via the shared navigation event bus.
+// Deep-link navigation is now handled by the route files (today.tsx / stock.tsx)
+// which emit and immediately redirect to index. This function is kept for any
+// non-widget callers that may pass a URL directly.
 function handleDeepLink(url: string | null) {
   if (!url) return;
   const { hostname, path } = Linking.parse(url);
@@ -95,12 +94,8 @@ export default function RootLayout() {
     return () => subscription.remove();
   }, []);
 
-  useEffect(() => {
-    if (Platform.OS === 'web') return;
-    Linking.getInitialURL().then(handleDeepLink);
-    const subscription = Linking.addEventListener('url', (event) => handleDeepLink(event.url));
-    return () => subscription.remove();
-  }, []);
+  // Widget deep links (chores://today, chores://stock) are handled by the
+  // route files today.tsx / stock.tsx — no Linking listener needed here.
 
   // Keep the native splash screen up until the themed fonts are ready, same
   // as any other "wait for an async resource before first paint" gate — a

@@ -151,4 +151,6 @@ supabase functions deploy calendar-feed --no-verify-jwt
 
 ## 📄 License
 
-MIT License. See individual subdirectories for third-party dependencies and assets.
+Copyright (c) 2026 Lara Evangelista. All Rights Reserved.
+
+This project is source-available for personal, private inspection and educational reference only. You may view and clone the repository, but you **may not** modify, distribute, publish, sublicense, or commercially exploit this software in any form. See the [LICENSE](LICENSE) file for the full legal terms.

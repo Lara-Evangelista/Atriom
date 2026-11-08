@@ -109,7 +109,7 @@ To run this project, you need your own Supabase project (the free tier works per
 
 ## 🔔 Setting Up Notifications
 
-Atriom supports both native mobile push notifications and browser web push.
+Atriom supports both native mobile push notifications and browser web push. (Work in progress, notifications might not work!)
 
 ### Native Mobile Push (Expo)
 - When a user logs in on a physical mobile device, the app automatically registers their Expo push token with the `expo_push_tokens` table in Supabase.
@@ -138,14 +138,6 @@ supabase functions deploy notify-nudge
 supabase functions deploy daily-check
 supabase functions deploy calendar-feed --no-verify-jwt
 ```
-
----
-
-## 🔄 How the 30-Day Rolling Schedule Works
-
-- Every recurring chore is pre-populated **30 days into the future**.
-- **On Completion / Skip**: Whenever a turn is marked complete (via `complete_chore_event`) or skipped (`skip_chore_event`), the database immediately extends that chore's schedule by 30 days ahead from today. This guarantees you always see an upcoming month of occurrences.
-- **On App Launch**: When opening the mobile or web app, `ensure_all_events` verifies that all active household chores have occurrences populated through the next 30 days, keeping schedules completely uninterrupted even on Supabase free tier where external crons may not be running.
 
 ---
 

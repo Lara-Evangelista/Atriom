@@ -1,0 +1,700 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Theme system — CSS-variable palettes swapped via a
+   [data-theme] attribute on <html>.
+   ============================================================ */
+
+:root,
+[data-theme="neutral"] {
+  --bg: #F7F7F2;
+  --surface: #FFFFFF;
+  --border: #E4E7DE;
+  --ink: #20231D;
+  --muted: #6E746B;
+  --accent: var(--custom-primary, #E7623E);
+  --accent-ink: #FFFFFF;
+  --warn: #9A6825;
+  --warn-bg: #FDF1E2;
+  --good: #2E7A59;
+  --good-bg: #E8F3EA;
+  --danger: #BD4545;
+  --danger-bg: #FCE9E8;
+  --radius: 0.5rem;
+  --font: 'Segoe UI', system-ui, sans-serif;
+  --emoji-scale: 1;
+}
+
+[data-theme="neutral"][data-mode="dark"] {
+  --bg: #1A1A1A;
+  --surface: #262626;
+  --border: #404040;
+  --ink: #F7F7F2;
+  --muted: #A3A3A3;
+}
+
+[data-theme="minimalist"] {
+  --bg: #F7F7F5;
+  --surface: #FFFFFF;
+  --border: #D9D9D5;
+  --ink: #202020;
+  --muted: #737373;
+  --accent: var(--custom-primary, #202020);
+  --accent-ink: #FFFFFF;
+  --warn: #8A5A20;
+  --warn-bg: #F4ECDD;
+  --good: #336B4E;
+  --good-bg: #E7F0EA;
+  --danger: #A84034;
+  --danger-bg: #F8E7E5;
+  --radius: 0.25rem;
+  --font: 'Segoe UI', system-ui, sans-serif;
+  --emoji-scale: 1;
+}
+
+[data-theme="minimalist"][data-mode="dark"] {
+  --bg: #121212;
+  --surface: #1E1E1E;
+  --border: #333333;
+  --ink: #F7F7F5;
+  --muted: #A3A3A3;
+  --accent: var(--custom-primary, #F7F7F5);
+  --accent-ink: #121212;
+}
+
+[data-theme="cutesy"] {
+  --bg: #FFF3F8;
+  --surface: #FFFFFF;
+  --border: #FBD3E6;
+  --ink: #6B3F5C;
+  --muted: #B98AA8;
+  --accent: var(--custom-primary, #FF6FA5);
+  --accent-ink: #FFFFFF;
+  --warn: #FFA24D;
+  --warn-bg: #FFF0DD;
+  --good: #58C48A;
+  --good-bg: #E4F8ED;
+  --danger: #FF6161;
+  --danger-bg: #FFE6E6;
+  --radius: 1.5rem;
+  --font: 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+  --emoji-scale: 1.25;
+}
+
+[data-theme="cutesy"][data-mode="dark"] {
+  --bg: #2C1824;
+  --surface: #402334;
+  --border: #5A324A;
+  --ink: #FFE6F1;
+  --muted: #D19CBD;
+}
+
+[data-theme="cyberpunk"] {
+  --bg: #0D0D1A;
+  --surface: #1A1A2E;
+  --border: #00F0FF;
+  --ink: #FFFFFF;
+  --muted: #00F0FF;
+  --accent: var(--custom-primary, #FF00E6);
+  --accent-ink: #FFFFFF;
+  --warn: #FFDD00;
+  --warn-bg: rgba(255, 221, 0, 0.2);
+  --good: #00FF9D;
+  --good-bg: rgba(0, 255, 157, 0.2);
+  --danger: #FF003C;
+  --danger-bg: rgba(255, 0, 60, 0.2);
+  --radius: 0;
+  --font: 'Consolas', monospace;
+  --emoji-scale: 1;
+}
+
+[data-theme="cyberpunk"][data-mode="dark"] {
+  /* Already dark, but defined for consistency */
+}
+
+[data-theme="fantasy"] {
+  --bg: #F5ECD7;
+  --surface: #FDF9EE;
+  --border: #D5C299;
+  --ink: #4A3A22;
+  --muted: #8B7355;
+  --accent: var(--custom-primary, #C8A95A);
+  --accent-ink: #4A3A22;
+  --warn: #D98C00;
+  --warn-bg: #FDE8B5;
+  --good: #5B8246;
+  --good-bg: #E3F1D9;
+  --danger: #B43333;
+  --danger-bg: #F4D3D3;
+  --radius: 0.75rem;
+  --font: 'Georgia', serif;
+  --emoji-scale: 1.1;
+}
+
+[data-theme="fantasy"][data-mode="dark"] {
+  --bg: #2B2317;
+  --surface: #3E3222;
+  --border: #6B573C;
+  --ink: #E0CFA4;
+  --muted: #A38C6A;
+  --accent-ink: #2B2317;
+}
+
+[data-theme="corporate"] {
+  --bg: #F0F2F5;
+  --surface: #FFFFFF;
+  --border: #CCD1D9;
+  --ink: #1F2937;
+  --muted: #6B7280;
+  --accent: var(--custom-primary, #2B4C7E);
+  --accent-ink: #FFFFFF;
+  --warn: #D97706;
+  --warn-bg: #FEF3C7;
+  --good: #059669;
+  --good-bg: #D1FAE5;
+  --danger: #DC2626;
+  --danger-bg: #FEE2E2;
+  --radius: 0;
+  --font: 'Arial', sans-serif;
+  --emoji-scale: 0.9;
+}
+
+[data-theme="corporate"][data-mode="dark"] {
+  --bg: #111827;
+  --surface: #1F2937;
+  --border: #374151;
+  --ink: #F9FAFB;
+  --muted: #9CA3AF;
+}
+
+/* ── Victorian ── Ornate elegance, deep burgundy & gold filigree */
+[data-theme="victorian"] {
+  --bg: #F5EDE3;
+  --surface: #FBF7F2;
+  --border: #C4A882;
+  --ink: #3B2218;
+  --muted: #7D6453;
+  --accent: var(--custom-primary, #8B1A1A);
+  --accent-ink: #F5E6D0;
+  --warn: #B8860B;
+  --warn-bg: #FDF2D1;
+  --good: #556B2F;
+  --good-bg: #E8F0D8;
+  --danger: #8B0000;
+  --danger-bg: #F5D5D5;
+  --radius: 0.375rem;
+  --font: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  --emoji-scale: 1;
+}
+
+[data-theme="victorian"][data-mode="dark"] {
+  --bg: #1E140E;
+  --surface: #2C1F15;
+  --border: #6B4C35;
+  --ink: #E8D5BF;
+  --muted: #A08668;
+  --accent: var(--custom-primary, #C94040);
+  --accent-ink: #1E140E;
+}
+
+/* ── Alice in Wonderland ── Whimsical playing cards, teacups, checkerboard wonder */
+[data-theme="wonderland"] {
+  --bg: #F0F7FF;
+  --surface: #FFFFFF;
+  --border: #A8D4F2;
+  --ink: #2C3E50;
+  --muted: #7F8C8D;
+  --accent: var(--custom-primary, #E74C3C);
+  --accent-ink: #FFFFFF;
+  --warn: #F39C12;
+  --warn-bg: #FFF8E1;
+  --good: #27AE60;
+  --good-bg: #E8F8F0;
+  --danger: #C0392B;
+  --danger-bg: #FDEDEB;
+  --radius: 1rem;
+  --font: 'Comic Sans MS', 'Trebuchet MS', cursive, sans-serif;
+  --emoji-scale: 1.3;
+}
+
+[data-theme="wonderland"][data-mode="dark"] {
+  --bg: #1A1A2E;
+  --surface: #22223B;
+  --border: #4A4E69;
+  --ink: #E0E0FF;
+  --muted: #9A8C98;
+  --accent: var(--custom-primary, #FF6B6B);
+}
+
+/* ── Steampunk ── Brass gears, leather goggles, steam-powered gadgets */
+[data-theme="steampunk"] {
+  --bg: #E8DCC8;
+  --surface: #F5EDDF;
+  --border: #B8976A;
+  --ink: #3D2B1F;
+  --muted: #7A6248;
+  --accent: var(--custom-primary, #CD7F32);
+  --accent-ink: #1A0F08;
+  --warn: #DAA520;
+  --warn-bg: #FFF3CD;
+  --good: #6B8E23;
+  --good-bg: #E8EFD5;
+  --danger: #8B4513;
+  --danger-bg: #F0D9C8;
+  --radius: 0.25rem;
+  --font: 'Courier New', Courier, monospace;
+  --emoji-scale: 1;
+}
+
+[data-theme="steampunk"][data-mode="dark"] {
+  --bg: #1C1410;
+  --surface: #2A1F17;
+  --border: #6B5138;
+  --ink: #D4C4A8;
+  --muted: #9C8366;
+  --accent: var(--custom-primary, #E8A040);
+  --accent-ink: #1C1410;
+}
+
+/* ── Enchanted Forest ── Mossy floors, fairy lights, hanging ivy */
+[data-theme="enchanted"] {
+  --bg: #E8F3E8;
+  --surface: #F5FAF5;
+  --border: #8FBC8F;
+  --ink: #1B3A1B;
+  --muted: #5A8A5A;
+  --accent: var(--custom-primary, #9B59B6);
+  --accent-ink: #FFFFFF;
+  --warn: #DAA520;
+  --warn-bg: #FFF8DC;
+  --good: #228B22;
+  --good-bg: #D4EDDA;
+  --danger: #B22222;
+  --danger-bg: #F8D7DA;
+  --radius: 1.25rem;
+  --font: 'Trebuchet MS', 'Lucida Sans', sans-serif;
+  --emoji-scale: 1.15;
+}
+
+[data-theme="enchanted"][data-mode="dark"] {
+  --bg: #0D1F0D;
+  --surface: #152915;
+  --border: #2E5E2E;
+  --ink: #C8E6C8;
+  --muted: #6DAA6D;
+  --accent: var(--custom-primary, #BB86FC);
+}
+
+/* ── Cosmic Galaxy ── Starry nights, glowing planets, nebula colors */
+[data-theme="cosmic"] {
+  --bg: #0B0E17;
+  --surface: #141829;
+  --border: #2E3555;
+  --ink: #E8E6FF;
+  --muted: #8B88B0;
+  --accent: var(--custom-primary, #7C4DFF);
+  --accent-ink: #FFFFFF;
+  --warn: #FFD54F;
+  --warn-bg: rgba(255, 213, 79, 0.15);
+  --good: #69F0AE;
+  --good-bg: rgba(105, 240, 174, 0.15);
+  --danger: #FF5252;
+  --danger-bg: rgba(255, 82, 82, 0.15);
+  --radius: 0.75rem;
+  --font: 'Segoe UI', system-ui, sans-serif;
+  --emoji-scale: 1.1;
+}
+
+[data-theme="cosmic"][data-mode="dark"] {
+  /* Already dark — just slightly deeper */
+  --bg: #050711;
+  --surface: #0B0E1A;
+  --border: #1E2340;
+}
+
+/* ── Retro ── Groovy 70s/80s vibes, warm tones, rounded everything */
+[data-theme="retro"] {
+  --bg: #FFF5E6;
+  --surface: #FFFAF2;
+  --border: #E8C59A;
+  --ink: #4A2C0A;
+  --muted: #9B7340;
+  --accent: var(--custom-primary, #E85D04);
+  --accent-ink: #FFFFFF;
+  --warn: #D4A017;
+  --warn-bg: #FFF5CC;
+  --good: #38A169;
+  --good-bg: #E6FFEC;
+  --danger: #E53E3E;
+  --danger-bg: #FFE5E5;
+  --radius: 2rem;
+  --font: 'Trebuchet MS', 'Lucida Grande', sans-serif;
+  --emoji-scale: 1.2;
+}
+
+[data-theme="retro"][data-mode="dark"] {
+  --bg: #1A0F05;
+  --surface: #2B1A0B;
+  --border: #5A3A1A;
+  --ink: #FFE0B2;
+  --muted: #C49A6C;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.app-surface { background: var(--surface); border-color: var(--border); transition: background 0.2s ease; }
+.app-border { border-color: var(--border); transition: border-color 0.2s ease; }
+.app-ink { color: var(--ink); transition: color 0.2s ease; }
+.app-muted { color: var(--muted); transition: color 0.2s ease; }
+.app-bg { background: var(--bg); transition: background 0.2s ease; }
+.app-accent-bg { background: var(--accent); color: var(--accent-ink); transition: background 0.2s ease, color 0.2s ease; }
+.app-accent-text { color: var(--accent); }
+.app-radius { border-radius: var(--radius); }
+.app-emoji { font-size: calc(1em * var(--emoji-scale)); }
+
+.app-chip-warn { background: var(--warn-bg); color: var(--warn); }
+.app-chip-good { background: var(--good-bg); color: var(--good); }
+.app-chip-danger { background: var(--danger-bg); color: var(--danger); }
+
+.app-btn {
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: transform 0.1s ease, opacity 0.15s ease, background 0.2s ease;
+}
+.app-btn:active { transform: scale(0.97); }
+.app-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.app-input {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: calc(var(--radius) * 0.6);
+  color: var(--ink);
+  padding: 0.55rem 0.8rem;
+  width: 100%;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.app-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.app-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Animations */
+@keyframes confetti-burst {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.5) rotate(720deg); opacity: 0; }
+}
+@keyframes firework-pop {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+@keyframes firework-burst {
+  0% { opacity: 1; }
+  100% { opacity: 1; }
+}
+@keyframes firework-spark {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--spark-x), var(--spark-y)) scale(0.3); opacity: 0; }
+}
+@keyframes sparkle-shine {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+  100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}
+@keyframes wave-ripple {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
+}
+@keyframes screen-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px) rotate(-1deg); }
+  50% { transform: translateX(10px) rotate(1deg); }
+  75% { transform: translateX(-10px) rotate(-1deg); }
+}
+/* ============================================================
+   DEEP THEME IMMERSION (Backgrounds & Flourishes)
+   ============================================================ */
+
+/* Cyberpunk */
+[data-theme="cyberpunk"] body {
+  background-image: linear-gradient(0deg, transparent 24%, rgba(0, 240, 255, 0.1) 25%, rgba(0, 240, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(0, 240, 255, 0.1) 75%, rgba(0, 240, 255, 0.1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 240, 255, 0.1) 25%, rgba(0, 240, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(0, 240, 255, 0.1) 75%, rgba(0, 240, 255, 0.1) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+}
+[data-theme="cyberpunk"] .app-card {
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+  border-left: 4px solid var(--accent);
+}
+
+/* Wonderland */
+[data-theme="wonderland"] body {
+  background-image: repeating-linear-gradient(45deg, rgba(231, 76, 60, 0.05) 25%, transparent 25%, transparent 75%, rgba(231, 76, 60, 0.05) 75%, rgba(231, 76, 60, 0.05)), repeating-linear-gradient(45deg, rgba(231, 76, 60, 0.05) 25%, var(--bg) 25%, var(--bg) 75%, rgba(231, 76, 60, 0.05) 75%, rgba(231, 76, 60, 0.05));
+  background-position: 0 0, 20px 20px;
+  background-size: 40px 40px;
+}
+[data-theme="wonderland"] .app-card {
+  box-shadow: 4px 4px 0px rgba(231, 76, 60, 0.2);
+}
+
+/* Steampunk */
+[data-theme="steampunk"] body {
+  background-image: radial-gradient(rgba(184, 151, 106, 0.3) 15%, transparent 16%), radial-gradient(rgba(184, 151, 106, 0.3) 15%, transparent 16%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+[data-theme="steampunk"] .app-card {
+  border: 2px solid var(--border);
+  box-shadow: inset 0 0 10px rgba(139, 69, 19, 0.1), 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Cosmic */
+[data-theme="cosmic"] body {
+  background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px), radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+[data-theme="cosmic"] .app-card {
+  border: 1px solid rgba(124, 77, 255, 0.3);
+  box-shadow: 0 0 15px rgba(124, 77, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Enchanted Forest */
+[data-theme="enchanted"] body {
+  background-image: radial-gradient(circle at 100% 150%, var(--bg) 24%, rgba(34, 139, 34, 0.05) 25%, rgba(34, 139, 34, 0.05) 28%, var(--bg) 29%, var(--bg) 36%, rgba(34, 139, 34, 0.05) 36%, rgba(34, 139, 34, 0.05) 40%, transparent 40%, transparent), radial-gradient(circle at 0 150%, var(--bg) 24%, rgba(34, 139, 34, 0.05) 25%, rgba(34, 139, 34, 0.05) 28%, var(--bg) 29%, var(--bg) 36%, rgba(34, 139, 34, 0.05) 36%, rgba(34, 139, 34, 0.05) 40%, transparent 40%, transparent);
+  background-size: 50px 50px;
+}
+[data-theme="enchanted"] .app-card {
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(34, 139, 34, 0.08);
+}
+
+/* Fantasy RPG */
+[data-theme="fantasy"] body {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23d5c299' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+[data-theme="fantasy"] .app-card {
+  border: 2px solid var(--border);
+  box-shadow: inset 0 0 0 2px var(--bg), inset 0 0 0 4px var(--border);
+}
+
+/* Victorian */
+[data-theme="victorian"] body {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c4a882' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+[data-theme="victorian"] .app-card {
+  border: 1px solid var(--border);
+  position: relative;
+}
+[data-theme="victorian"] .app-card::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px dashed var(--muted);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Float animation for ThemeDecorator */
+@keyframes float-drift {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-30px) rotate(10deg); }
+}
+
+/* ============================================================
+   DEEP THEME: Buttons, Inputs, Sidebar, Scrollbar, Misc
+   ============================================================ */
+
+/* Cyberpunk — glitch-style buttons, neon borders */
+[data-theme="cyberpunk"] .app-btn {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Consolas', monospace;
+  border: 1px solid var(--accent);
+}
+[data-theme="cyberpunk"] .app-btn:hover:not(:disabled) {
+  box-shadow: 0 0 12px var(--accent), inset 0 0 12px rgba(0, 240, 255, 0.1);
+}
+[data-theme="cyberpunk"] .app-input {
+  font-family: 'Consolas', monospace;
+  border-color: rgba(0, 240, 255, 0.3);
+}
+[data-theme="cyberpunk"] .app-input:focus {
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+[data-theme="cyberpunk"] aside {
+  border-right-color: rgba(0, 240, 255, 0.3) !important;
+  background: linear-gradient(180deg, #0D0D1A 0%, #1A1A2E 100%) !important;
+}
+
+/* Fantasy — parchment buttons, scroll-like sidebar */
+[data-theme="fantasy"] .app-btn {
+  font-family: 'Georgia', serif;
+  border: 2px solid var(--border);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+[data-theme="fantasy"] .app-card {
+  background-image: linear-gradient(to bottom, transparent 95%, rgba(213, 194, 153, 0.3) 100%);
+}
+[data-theme="fantasy"] aside {
+  background: linear-gradient(180deg, #F5ECD7 0%, #EDE0C8 100%) !important;
+  border-right: 3px double var(--border) !important;
+}
+
+/* Victorian — elegant inset borders, serif everything */
+[data-theme="victorian"] .app-btn {
+  font-family: 'Palatino Linotype', serif;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 3px rgba(0,0,0,0.15);
+}
+[data-theme="victorian"] aside {
+  background: linear-gradient(180deg, #F5EDE3 0%, #EDE0D0 100%) !important;
+  border-right: 1px solid var(--border) !important;
+  box-shadow: inset -8px 0 15px -10px rgba(0,0,0,0.1);
+}
+
+/* Wonderland — bouncy, playful, offset shadows */
+[data-theme="wonderland"] .app-btn {
+  font-family: 'Comic Sans MS', cursive;
+  transform: rotate(-0.5deg);
+  border: 2px solid var(--border);
+}
+[data-theme="wonderland"] .app-btn:hover:not(:disabled) {
+  transform: rotate(0.5deg) scale(1.02);
+}
+[data-theme="wonderland"] .app-card {
+  transform: rotate(-0.3deg);
+}
+[data-theme="wonderland"] .app-card:nth-child(even) {
+  transform: rotate(0.3deg);
+}
+[data-theme="wonderland"] aside {
+  background: linear-gradient(180deg, #F0F7FF 0%, #E5F0FF 100%) !important;
+  border-right: 3px dashed var(--border) !important;
+}
+
+/* Steampunk — riveted, industrial, embossed */
+[data-theme="steampunk"] .app-btn {
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.3);
+}
+[data-theme="steampunk"] aside {
+  background: linear-gradient(180deg, #E8DCC8 0%, #D4C4A8 100%) !important;
+  border-right: 3px solid var(--border) !important;
+}
+
+/* Enchanted — soft glows, dreamy */
+[data-theme="enchanted"] .app-btn {
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(155, 89, 182, 0.15);
+}
+[data-theme="enchanted"] .app-btn:hover:not(:disabled) {
+  box-shadow: 0 2px 12px rgba(155, 89, 182, 0.25);
+}
+[data-theme="enchanted"] .app-card {
+  box-shadow: 0 2px 12px rgba(34, 139, 34, 0.06);
+}
+[data-theme="enchanted"] aside {
+  background: linear-gradient(180deg, #E8F3E8 0%, #D5EAD5 100%) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+/* Cosmic — glowing, ethereal */
+[data-theme="cosmic"] .app-btn {
+  border: 1px solid rgba(124, 77, 255, 0.4);
+  box-shadow: 0 0 8px rgba(124, 77, 255, 0.2);
+}
+[data-theme="cosmic"] .app-btn:hover:not(:disabled) {
+  box-shadow: 0 0 16px rgba(124, 77, 255, 0.4);
+}
+[data-theme="cosmic"] aside {
+  background: linear-gradient(180deg, #0B0E17 0%, #141829 100%) !important;
+  border-right: 1px solid rgba(124, 77, 255, 0.2) !important;
+}
+
+/* Retro — rounded, warm, groovy */
+[data-theme="retro"] .app-btn {
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0px var(--border);
+}
+[data-theme="retro"] .app-btn:active {
+  box-shadow: 1px 1px 0px var(--border);
+  transform: translate(2px, 2px);
+}
+[data-theme="retro"] .app-card {
+  box-shadow: 4px 4px 0px var(--border);
+}
+[data-theme="retro"] aside {
+  background: linear-gradient(180deg, #FFF5E6 0%, #FFE8CC 100%) !important;
+  border-right: 3px solid var(--border) !important;
+}
+[data-theme="retro"] body {
+  background-image: radial-gradient(circle, rgba(232, 93, 4, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Cutesy — extra rounded, shadows, hearts */
+[data-theme="cutesy"] .app-btn {
+  border: 2px solid var(--border);
+  box-shadow: 0 4px 12px rgba(255, 111, 165, 0.15);
+}
+[data-theme="cutesy"] .app-card {
+  box-shadow: 0 4px 15px rgba(255, 111, 165, 0.1);
+}
+[data-theme="cutesy"] aside {
+  background: linear-gradient(180deg, #FFF3F8 0%, #FFE6F0 100%) !important;
+  border-right: 2px solid var(--border) !important;
+}
+[data-theme="cutesy"] body {
+  background-image: radial-gradient(rgba(255, 111, 165, 0.07) 2px, transparent 2px);
+  background-size: 30px 30px;
+}
+
+/* Minimalist — ultra clean, almost brutalist */
+[data-theme="minimalist"] .app-card {
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+[data-theme="minimalist"] .app-btn {
+  border: 1px solid var(--ink);
+}
+
+/* Corporate — standard boring shadows */
+[data-theme="corporate"] .app-btn {
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+[data-theme="corporate"] .app-card {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+/* ============================================================
+   Themed scrollbars (Webkit only)
+   ============================================================ */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+[data-theme="cyberpunk"]::-webkit-scrollbar-thumb { background: #00F0FF; }
+[data-theme="cosmic"]::-webkit-scrollbar-thumb { background: #7C4DFF; }
+[data-theme="enchanted"]::-webkit-scrollbar-thumb { background: #9B59B6; }

@@ -1,0 +1,16 @@
+import { createClient } from "@supabase/supabase-js";
+
+const url = import.meta.env.VITE_SUPABASE_URL;
+const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!url || !key) {
+  // Fails loudly in dev rather than silently hitting a blank backend.
+  // eslint-disable-next-line no-console
+  console.error(
+    "Missing VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY — copy .env.example to .env and fill them in."
+  );
+}
+
+export const supabase = createClient(url, key);
+
+export const CALENDAR_FEED_URL = import.meta.env.VITE_CALENDAR_FEED_URL || "";

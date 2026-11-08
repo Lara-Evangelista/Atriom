@@ -1,0 +1,107 @@
+# ==============================================================================
+# Atriom - Global .gitignore
+# ==============================================================================
+
+# --- Secrets and Environment Files (KEEP PRIVATE) ---
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.env
+*.pem
+*.key
+*.p8
+*.p12
+*.jks
+*.keystore
+*.mobileprovision
+
+# Firebase & Google Cloud credentials
+*firebase*.json
+*service-account*.json
+google-services.json
+GoogleService-Info.plist
+
+# Supabase CLI temp files (may contain project ref/tokens)
+supabase/.temp/
+**/supabase/.temp/
+
+# --- Dependencies & Build Outputs ---
+node_modules/
+**/node_modules/
+.expo/
+**/.expo/
+dist/
+**/dist/
+web-build/
+**/web-build/
+expo-env.d.ts
+**/expo-env.d.ts
+
+# --- Backup Archives ---
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# --- Database Dumps ---
+dump.sql
+**/dump.sql
+
+# --- Logs & Debug ---
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.log
+
+# --- Temporary & Migration Scratch Scripts ---
+fix*.js
+fix*.py
+fix*.sql
+**/fix*.js
+**/fix*.py
+**/fix*.sql
+check_*.js
+check_*.cjs
+**/check_*.js
+**/check_*.cjs
+script*.js
+script*.py
+**/script*.js
+**/script*.py
+import*.js
+**/import*.js
+add_translations*.js
+**/add_translations*.js
+clean_dupes.js
+find_dupes.js
+remove_all_dupes.js
+**/clean_dupes.js
+**/find_dupes.js
+**/remove_all_dupes.js
+debug.py
+**/debug.py
+insert-lang.js
+check_import.txt
+npx
+**/npx
+update.py
+update.js
+**/update.py
+**/update.js
+update_*.js
+**/update_*.js
+revert.js
+**/revert.js
+
+# --- OS & Editor artifacts ---
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/

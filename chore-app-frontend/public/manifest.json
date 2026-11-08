@@ -1,0 +1,13 @@
+{
+  "name": "Atriom",
+  "short_name": "Atriom",
+  "description": "Household chore rotation, tracking, and reminders.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F7F2",
+  "theme_color": "#E7623E",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
